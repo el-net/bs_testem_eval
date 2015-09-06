@@ -1,0 +1,19 @@
+machine:
+  services:
+    - docker
+  node:
+    version: 0.12.2
+
+dependencies:
+  pre:
+    - npm install -g testem browserstack-cli
+    - curl https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-ia32.zip > BrowserStackLocal-linux-ia32.zip
+    - unzip -f BrowserStackLocal-linux-ia32.zip
+    - chmod 755 BrowserStackLocal
+  override:
+    - npm install
+
+test:
+  override:
+    #using testem
+    - testem ci

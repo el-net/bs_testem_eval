@@ -1,0 +1,22 @@
+{
+  "name": "bs_testem_eval",
+  "version": "1.0.0",
+  "description": "circle ci with testem boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "testem ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/el-net/test1.git"
+  },
+  "author": "Osher E",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/el-net/test1/issues"
+  },
+  "homepage": "https://github.com/el-net/test1#readme",
+  "devDependencies": {
+    "mocha": "^2.3.0"
+  }
+}

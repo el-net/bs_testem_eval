@@ -1,0 +1,62 @@
+framework: mocha
+src_files: 
+  - ./test/client/**/*.js
+  
+on_start: 
+  command: ./BrowserStackLocal $BS_AUTHKEY 
+  wait_for_text: You can now access your local server(s) in our remote browser.
+
+
+launch_in_ci: [nodejs, Chrome, bs_chrome] #, bs_opera, bs_firefox, bs_safari_51, bs_safari_5, bs_ie_7, bs_ie_8, bs_ie_9, bs_android_23, bs_android_41]
+launch_in_dev: [nodejs, Chrome, bs_chrome] #, bs_chrome] 
+
+
+#list of all launchers
+launchers:
+  nodejs:
+    command: mocha --reporter tap test/server/**/*.test.js
+    protocol: tap
+
+  bs_chrome:
+    command: browserstack launch --attach -k $BS_AUTHKEY chrome:24.0 http://localhost:7357/ 
+    protocol: browser
+
+
+  #more launchers waiting in the stack...
+
+  bs_opera:
+    command: browserstack launch --attach -k $BS_AUTHKEY opera:12.11 http://localhost:7357/ 
+    protocol: browser
+
+  bs_firefox:
+    command: browserstack launch --attach -k $BS_AUTHKEY firefox:16.0 http://localhost:7357/ 
+    protocol: browser
+
+  bs_safari_5:
+    command: browserstack launch --attach -k $BS_AUTHKEY safari:5.0 http://localhost:7357/ 
+    protocol: browser
+
+  bs_safari_51:
+    command: browserstack launch --attach -k $BS_AUTHKEY safari:5.1 http://localhost:7357/ 
+    protocol: browser
+
+  bs_ie_7:
+    command: browserstack launch --attach -k $BS_AUTHKEY ie:7.0 http://localhost:7357/ 
+    protocol: browser
+
+  bs_ie_8:
+    command: browserstack launch --attach -k $BS_AUTHKEY ie:8.0 http://localhost:7357/ 
+    protocol: browser
+
+  bs_ie_9:
+    command: browserstack launch --attach -k $BS_AUTHKEY ie:9.0 http://localhost:7357/ 
+    protocol: browser
+
+  bs_android_23:
+    command: browserstack launch --attach -k $BS_AUTHKEY "Motorola Photon 4G" http://localhost:7357/ 
+    protocol: browser
+
+  bs_android_41:
+    command: browserstack launch --attach -k $BS_AUTHKEY "Samsung Galaxy S III" http://localhost:7357/ 
+    protocol: browser
+

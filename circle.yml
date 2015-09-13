@@ -6,10 +6,13 @@ machine:
 
 dependencies:
   pre:
-    - npm install -g testem browserstack-cli
+    # replace local binary of mac-os with linux binary
     - curl https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip > BrowserStackLocal-linux.zip
-    - unzip -o BrowserStackLocal-linux.zip
-    - chmod 755 BrowserStackLocal
+    - unzip -o BrowserStackLocal-linux.zip; chmod 755 BrowserStackLocal
+    - rm bin/BrowserStackLocal; mv BrowserStackLocal bin/BrowserStackLocal
+    # 
+    - bash ./bin/BSLocal.sh start
+
   override:
     - npm install
 
@@ -17,3 +20,5 @@ test:
   override:
     #using testem
     - testem ci
+  post:
+    - bash ./bin/BSLocal.sh stop    

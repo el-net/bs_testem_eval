@@ -2,9 +2,9 @@ framework: mocha
 src_files: 
   - ./test/client/**/*.js
   
-on_start: 
-  command: ./BrowserStackLocal $BS_AUTHKEY 
-  wait_for_text: You can now access your local server(s) in our remote browser.
+#on_start: 
+#  command: ./BrowserStackLocal $BS_AUTHKEY 
+#  wait_for_text: You can now access your local server(s) in our remote browser.
 
 
 launch_in_ci: [nodejs, Chrome, bs_chrome] #, bs_opera, bs_firefox, bs_safari_51, bs_safari_5, bs_ie_7, bs_ie_8, bs_ie_9, bs_android_23, bs_android_41]
